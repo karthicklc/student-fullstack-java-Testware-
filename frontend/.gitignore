@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# React dependencies and environment variables
+frontend/node_modules/
+frontend/.env
+
+# Spring Boot build files and real credentials
+studentbackend/studentbackend/target/
+studentbackend/studentbackend/src/main/resources/application.properties
+
+# General build output
+dist/
+
