@@ -1,0 +1,137 @@
+TASK14_KARTHICK LC:
+
+
+PART-B: PREDICT THE OUTPUT:
+
+
+Q7) code:
+	console.log("A");
+fetch("http://localhost:8080/api/students").then(() => console.log("B"));
+setTimeout(() => console.log("C"), 0);
+Promise.resolve().then(() => console.log("D"));
+console.log("E");
+
+
+OUTPUT:	A
+	E
+	D
+	C
+	B
+
+REASON:	Synchronous statements run first (A, E), the resolved Promise callback runs next (D), and the timer and network callback run later depending on their scheduling and completion.
+
+
+
+Q8) CODE:
+	async function f() {
+console.log("1");
+await null;
+console.log("2");
+}
+console.log("3");
+f();
+console.log("4");
+
+OUTPUT:	3
+	1
+	4
+	2
+
+REASON:	JavaScript runs synchronous statements first, while the Promise callback runs later as a microtask.
+
+
+
+Q9) CODE:
+	try {
+await axios.get("http://localhost:8080/api/students/99");
+console.log("OK");
+} catch (err) {
+console.log(err.response.status);
+console.log(err.response.data.error);
+}
+console.log("Done");
+
+OUTPUT:	500
+	Internal Server Error
+	Done
+
+REASON:	Axios receives an HTTP 500 Internal Server Error from the Spring Boot backend for student ID 99, so execution enters the catch block, prints 500 and Internal Server Error, and then prints Done because the error is handled.
+
+
+
+Q10) CODE:
+	const res = await fetch("http://localhost:8080/api/students/99");
+console.log(res.ok);
+console.log(res.status);
+const data = await res.json();
+console.log(data.error);
+
+OUTPUT:	false
+	500
+	Internal Server Error
+
+REASON:	The backend returns a 500 Internal Server Error instead of the expected 404 response, so Fetch prints false for res.ok, 500 for the status, and Internal Server Error because that is the message returned by the server.
+
+
+Q11) CODE:
+	const [count, setCount] = useState(0);
+function add() {
+setCount(count + 1);
+setCount(count + 1);
+setCount(c => c + 1);
+console.log(count);
+}
+
+OUTPUT:	0
+REASON:	Both setCount(count + 1) calls use the same initial value, 0, while the functional update adds one more to the queued state, so the console prints 0 and the final count becomes 2.
+
+
+Q12) CODE:
+	const s = { name: "Arun", marks: 85, address: undefined, tags: ["a", "b"] };
+console.log(JSON.stringify(s));
+console.log(JSON.parse('{"x":1,"y":[2,3]}').y.length);
+console.log(typeof JSON.parse("42"));
+
+OUTPUT:	{"name":"Arun","marks":85,"tags":["a","b"]}
+	2
+	number
+
+REASON:	JSON.stringify() omits object properties with undefined values, the y array contains two elements, and JSON.parse("42") returns a number.
+
+
+Q13) CODE:
+	git init
+echo "v1" > a.txt
+git add a.txt
+git commit -m "first"
+echo "v2" >> a.txt
+git commit -m "second"
+git status --short
+git log --oneline | wc -l
+
+
+OUTPUT:	No. The second commit fails because a.txt was modified but not staged.
+Output of git status --short:  M a.txt
+Output of git log --oneline | wc -l: 1
+
+REASON:	The file was not staged after the second modification, so the second commit fails and only one commit exists.
+
+
+Q14) CODE:
+	git checkout -b feature
+echo "login" > login.txt
+git add login.txt
+git commit -m "add login"
+git checkout main
+ls
+git merge feature
+ls
+
+OUTPUT:	
+	Output of the first ls: a.txt
+	Output of git merge feature: Git merges the feature branch into main using a fast-forward merge, assuming no new commits were made on main after creating the feature branch.
+	Output of the second ls: a.txt
+				 login.txt
+
+REASON:	Before merging, login.txt exists only on the feature branch. The fast-forward merge moves main to the feature commit, so both files appear afterward.
+

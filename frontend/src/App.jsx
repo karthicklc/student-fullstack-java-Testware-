@@ -73,10 +73,80 @@
 // export default App;
 
 //Q4//
-import Q4 from "./Q4";
+// import Q4 from "./Q4";
+// function App() {
+//   return <Q4 />;
+// }
+// export default App;
+
+//Q7//
+// import Q7 from "./Q7";
+// function App() {
+//   return <Q7 />;
+// }
+// export default App;
+
+//Q8//
+// import Q8 from "./Q8";
+// function App() {
+//   return <Q8 />;
+// }
+// export default App;
+
+//Q9//
+// import Q9 from "./Q9";
+// function App() {
+//   return <Q9 />;
+// }
+// export default App;
+
+//Q10//
+// import Q10 from "./Q10";
+// function App() {
+//   return <Q10 />;
+// }
+// export default App;
+
+//Q11//
+// import Q11 from "./Q11";
+// function App() {
+//   return <Q11 />;
+// }
+// export default App;
+
+//Q12//
+// import Q12 from "./Q12";
+// function App() {
+//   return <Q12 />;
+// }
+// export default App;
+
+//PART C//
+//Q15//
+// import Q15 from "./Q15";
+// function App() {
+//   return <Q15 />;
+// }
+// export default App;
+
+//Q16//
+// import Q16 from "./Q16";
+// function App() {
+//   return <Q16 />;
+// }
+// export default App;
+
+//Q17//
+import Q17 from "./Q17";
 function App() {
-  return <Q4 />;
+  return <Q17 />;
 }
 export default App;
+
+
+
+
+
+
 
 
